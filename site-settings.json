@@ -163,7 +163,7 @@
 			{
 				"name": "Allow_Comments",
 				"label": "Allow Comments",
-				"enable": flase
+				"enable": false
 			},
 			{
 				"name": "Post_Style",
