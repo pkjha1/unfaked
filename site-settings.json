@@ -18,7 +18,7 @@
 		"features_list": ["Create a free account.", "Write your stories."]
 	},
 	"top_banner": {
-		"enable": true,
+		"enable": false,
 		"description": "-50% Intro price for the next 72 hours only!.",
 		"end_link": {
 			"url": "https://themeforest.net/item/ncmaz-nextjs-headless-wordpress-blog-magazine/47815656",
@@ -32,21 +32,21 @@
 		"sub_title": "Let's explore the most popular categories"
 	},
 	"site_info": {
-		"site_title": "Ncmaz Nextjs Blog",
-		"site_description": "Ncmaz Nextjs Blog headless WordPress",
-		"site_keywords": "Ncmaz Nextjs Blog",
-		"site_author": "ChisNghiax",
-		"site_email": "Your Email",
+		"site_title": "unFAKED",
+		"site_description": "Fight fake's with unFAKED",
+		"site_keywords": "fake news deepfake india",
+		"site_author": "Dimechain",
+		"site_email": "info@unfaked.in",
 		"site_phone": "Your Phone",
 		"site_address": "Your Address",
 		"site_city": "Your City",
 		"site_state": "Your State",
 		"site_zip": "Your Zip",
 		"site_country": "Your Country",
-		"site_url": "https://www.yoursite.com",
-		"site_logo": "/logo.png",
+		"site_url": "https://www.unfaked.in",
+		"site_logo": "https://woocommerce-1286012-4730201.cloudwaysapps.com/wp-content/uploads/2024/07/unfaked-1.png",
 		"site_logo_light": "/logo-light.png",
-		"site_favicon": "/favicon.png"
+		"site_favicon": "https://woocommerce-1286012-4730201.cloudwaysapps.com/wp-content/uploads/2024/07/unfaked-1.png"
 	},
 	"site_socials": [
 		{
@@ -81,7 +81,7 @@
 		}
 	},
 	"site_footer": {
-		"all_rights_reserved_text": "© 2023 ChisNghiax Company, Inc. All rights reserved."
+		"all_rights_reserved_text": "© 2024 unFAKED, by Dimechain Consultancy LLP. All rights reserved."
 	},
 	"single_page": {
 		"show_view_cout": true,
@@ -90,7 +90,7 @@
 	"search_page": {
 		"recommended_searches": {
 			"enable": true,
-			"title": "Recommended searches",
+			"title": "Trending searches",
 			"items": [
 				{
 					"title": "Programming",
@@ -163,7 +163,7 @@
 			{
 				"name": "Allow_Comments",
 				"label": "Allow Comments",
-				"enable": true
+				"enable": flase
 			},
 			{
 				"name": "Post_Style",
@@ -181,8 +181,8 @@
 		"title": "Lost your password?",
 		"sub_title": "Enter your email below to reset your password.",
 		"blockquote": {
-			"text": "This theme has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
-			"author": "Chis agency"
+			"text": "Stay vigilant. While numerous platforms claim to detect deepfakes, many fall short on accuracy, rendering their hype meaningless.",
+			"author": "unFAKED"
 		}
 	},
 	"signUp_page": {
@@ -197,8 +197,8 @@
 		"title": "Sign in to your account",
 		"sub_title": "Enter your email below to sign in to your account.",
 		"blockquote": {
-			"text": "This theme has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
-			"author": "Chis agency"
+			"text": "Stay vigilant. While numerous platforms claim to detect deepfakes, many fall short on accuracy, rendering their hype meaningless.",
+			"author": "unFAKED"
 		},
 		"lost_password": {
 			"is_use_lostpassword_default_of_wp": false,
