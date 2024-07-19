@@ -5,7 +5,7 @@
 	"subcription_widget": {
 		"enable": true,
 		"title": "Stay up to date",
-		"description": "Get notified when I publish something new, and unsubscribe at any time.",
+		"description": "Get notified when we publish something new, and unsubscribe at any time.",
 		"placeholder": "Enter your email address",
 		"success_message": "Thank you for subscribing. You're in!",
 		"error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
@@ -18,11 +18,11 @@
 		"features_list": ["Create a free account.", "Write your stories."]
 	},
 	"top_banner": {
-		"enable": false,
-		"description": "-50% Intro price for the next 72 hours only!.",
+		"enable": true,
+		"description": "Try for free, Pi: AI powering unFAKED",
 		"end_link": {
-			"url": "https://themeforest.net/item/ncmaz-nextjs-headless-wordpress-blog-magazine/47815656",
-			"text": "Buy now  →",
+			"url": "https://app.thepi.app/login",
+			"text": "Try now  →",
 			"new_tab": true
 		}
 	},
@@ -44,33 +44,33 @@
 		"site_zip": "Your Zip",
 		"site_country": "Your Country",
 		"site_url": "https://www.unfaked.in",
-		"site_logo": "https://woocommerce-1286012-4730201.cloudwaysapps.com/wp-content/uploads/2024/07/unfaked-1.png",
-		"site_logo_light": "https://woocommerce-1286012-4730201.cloudwaysapps.com/wp-content/uploads/2024/07/white-unfaked.png",
-		"site_favicon": "https://woocommerce-1286012-4730201.cloudwaysapps.com/wp-content/uploads/2024/07/unfaked-1.png"
+		"site_logo": "https://news.unfaked.in/wp-content/uploads/2024/07/unfaked-1.png",
+		"site_logo_light": "https://news.unfaked.in/wp-content/uploads/2024/07/white-unfaked.png",
+		"site_favicon": "https://news.unfaked.in/wp-content/uploads/2024/07/unfaked-1.png"
 	},
 	"site_socials": [
 		{
 			"name": "facebook",
-			"url": "https://www.facebook.com/yourfacebookpage",
+			"url": "https://www.facebook.com/profile.php?id=61560676800071",
 			"icon": "/images/socials/facebook.svg",
 			"description": "Follow us on Facebook"
 		},
 		{
 			"name": "twitter",
-			"url": "https://twitter.com/yourtwitterpage",
+			"url": "https://x.com/dime_chain",
 			"icon": "/images/socials/x-twitter.svg",
 			"description": "Follow us on Twitter"
 		},
 
 		{
-			"name": "github",
-			"url": "https://www.github.com/yourmediumpage",
+			"name": "Youtube",
+			"url": "https://www.youtube.com/@unfaked-daily",
 			"icon": "/images/socials/github.svg",
 			"description": "Follow us on Github"
 		},
 		{
-			"name": "tiktok",
-			"url": "https://www.tiktok.com/yourtiktokpage",
+			"name": "Instagram",
+			"url": "https://www.instagram.com/unfaked.in",
 			"icon": "/images/socials/tiktok.svg",
 			"description": "Follow us on Tiktok"
 		}
