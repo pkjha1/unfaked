@@ -56,7 +56,7 @@ const CommentCardFake: FC<CommentCardFakeProps> = ({
 				id={'comment-fake-' + id}
 				ref={fakeCommentRef}
 			>
-				<Avatar
+				{/* <Avatar
 					sizeClass={`${
 						size === 'large'
 							? 'text-sm sm:text-base w-[28px] h-[28px] sm:h-[32px] sm:w-[32px]'
@@ -66,19 +66,19 @@ const CommentCardFake: FC<CommentCardFakeProps> = ({
 					containerClassName="mt-[8px] sm:mt-[14px] flex-shrink-0"
 					imgUrl={getAuthorAvatar()}
 					userName={author?.node.name || 'N'}
-				/>
+				/> */}
 				<div className="nc-CommentCardFake__box flex flex-1 flex-col overflow-hidden p-2 text-sm sm:pt-3 sm:text-base">
 					{/* AUTHOR INFOR */}
 					<div className="space-y-1">
 						<div className="relative flex items-center">
-							{author?.node.__typename === 'User' && (
+							{/* {author?.node.__typename === 'User' && (
 								<Link
 									className="flex-shrink-0 font-semibold capitalize text-neutral-800 dark:text-neutral-100"
 									href={author?.node.uri || '/'}
 								>
 									{author.node.name}
 								</Link>
-							)}
+							)} */}
 
 							{author?.node.__typename === 'CommentAuthor' && (
 								<a

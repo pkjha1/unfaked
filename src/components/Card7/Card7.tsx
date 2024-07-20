@@ -83,11 +83,11 @@ const Card7: FC<Card7Props> = ({
 						></Link>
 					</h2>
 				</div>
-				<CardAuthor2
+				{/* <CardAuthor2
 					readingTime={ncPostMetaData?.readingTime || 1}
 					date={date}
 					author={author}
-				/>
+				/> */}
 			</div>
 		</div>
 	)
