@@ -30,11 +30,11 @@ const MainNav1: FC<MainNav1Props> = ({ menuItems, title, description }) => {
 					</div>
 
 					<div className="flex flex-1 items-center justify-end space-x-1 text-neutral-700 rtl:space-x-reverse dark:text-neutral-100">
-						<div className="hidden items-center lg:flex">
+						{/* <div className="hidden items-center lg:flex">
 							<CreateBtn />
 							<SearchIconBtn className="flex" />
 							<AvatarDropdown />
-						</div>
+						</div> */}
 						<div className="flex items-center lg:hidden">
 							<SearchIconBtn className="flex" />
 							<AvatarDropdown />
