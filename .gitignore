@@ -3,3 +3,8 @@
 node_modules
 
 .idea
+.next
+possibleTypes.json
+src/src/__generated__
+.env.local
+.env.local.sample
