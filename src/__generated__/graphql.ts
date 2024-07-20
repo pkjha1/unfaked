@@ -1819,7 +1819,7 @@ export type CoreBlock = EditorBlock & PageEditorBlock & PostEditorBlock & {
 export type CoreBlockAttributes = {
   __typename?: 'CoreBlockAttributes';
   /** The &quot;content&quot; field on the &quot;CoreBlockAttributes&quot; block or block attributes */
-  content?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  content: Scalars['BlockAttributesObject']['output'];
   /** The &quot;lock&quot; field on the &quot;CoreBlockAttributes&quot; block or block attributes */
   lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;metadata&quot; field on the &quot;CoreBlockAttributes&quot; block or block attributes */
@@ -4021,6 +4021,8 @@ export type CoreMediaTextAttributes = BlockWithSupportsAnchor & {
   style?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;textColor&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
   textColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;useFeaturedImage&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
+  useFeaturedImage: Scalars['Boolean']['output'];
   /** The &quot;verticalAlignment&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
   verticalAlignment?: Maybe<Scalars['String']['output']>;
 };
@@ -4094,7 +4096,7 @@ export type CoreMore = EditorBlock & PageEditorBlock & PostEditorBlock & {
 export type CoreMoreAttributes = {
   __typename?: 'CoreMoreAttributes';
   /** The &quot;customText&quot; field on the &quot;CoreMoreAttributes&quot; block or block attributes */
-  customText?: Maybe<Scalars['String']['output']>;
+  customText: Scalars['String']['output'];
   /** The &quot;lock&quot; field on the &quot;CoreMoreAttributes&quot; block or block attributes */
   lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;metadata&quot; field on the &quot;CoreMoreAttributes&quot; block or block attributes */
@@ -5765,8 +5767,6 @@ export type CoreQuote = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock 
 /** Attributes of the CoreQuote Block Type */
 export type CoreQuoteAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreQuoteAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
-  align?: Maybe<Scalars['String']['output']>;
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
   /** The &quot;backgroundColor&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
@@ -5791,6 +5791,8 @@ export type CoreQuoteAttributes = BlockWithSupportsAnchor & {
   metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;style&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
   style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textAlign&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
+  textAlign?: Maybe<Scalars['String']['output']>;
   /** The &quot;textColor&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
   textColor?: Maybe<Scalars['String']['output']>;
   /** The &quot;value&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes */
@@ -6153,6 +6155,8 @@ export type CoreSiteTaglineAttributes = {
   fontSize?: Maybe<Scalars['String']['output']>;
   /** The &quot;gradient&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes */
   gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;level&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes */
+  level: Scalars['Float']['output'];
   /** The &quot;lock&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes */
   lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;metadata&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes */
@@ -7824,6 +7828,11 @@ export type GraphqlDocument = ContentNode & DatabaseIdentifier & Node & NodeWith
   __typename?: 'GraphqlDocument';
   /** Alias names for saved GraphQL query documents */
   alias?: Maybe<Array<Scalars['String']['output']>>;
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<GraphqlDocumentToGraphqlDocumentConnection>;
   /** @deprecated Deprecated in favor of using Next.js pages */
   conditionalTags?: Maybe<ConditionalTags>;
   /** The content of the post. */
@@ -7889,6 +7898,11 @@ export type GraphqlDocument = ContentNode & DatabaseIdentifier & Node & NodeWith
   modified?: Maybe<Scalars['String']['output']>;
   /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
   modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<GraphqlDocumentToParentConnectionEdge>;
   /** The password for the graphql_document object. */
   password?: Maybe<Scalars['String']['output']>;
   /**
@@ -7913,6 +7927,15 @@ export type GraphqlDocument = ContentNode & DatabaseIdentifier & Node & NodeWith
   title?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The graphqlDocument type */
+export type GraphqlDocumentAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -8319,6 +8342,45 @@ export enum GraphqlDocumentIdType {
   Uri = 'URI'
 }
 
+/** Connection between the GraphqlDocument type and the graphqlDocument type */
+export type GraphqlDocumentToGraphqlDocumentConnection = Connection & GraphqlDocumentConnection & {
+  __typename?: 'GraphqlDocumentToGraphqlDocumentConnection';
+  /** Edges for the GraphqlDocumentToGraphqlDocumentConnection connection */
+  edges: Array<GraphqlDocumentToGraphqlDocumentConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<GraphqlDocument>;
+  /** Information about pagination in a connection. */
+  pageInfo: GraphqlDocumentToGraphqlDocumentConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type GraphqlDocumentToGraphqlDocumentConnectionEdge = Edge & GraphqlDocumentConnectionEdge & {
+  __typename?: 'GraphqlDocumentToGraphqlDocumentConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: GraphqlDocument;
+};
+
+/** Page Info on the &quot;GraphqlDocumentToGraphqlDocumentConnection&quot; */
+export type GraphqlDocumentToGraphqlDocumentConnectionPageInfo = GraphqlDocumentConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'GraphqlDocumentToGraphqlDocumentConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
 /** Connection between the GraphqlDocument type and the graphqlDocumentGroup type */
 export type GraphqlDocumentToGraphqlDocumentGroupConnection = Connection & GraphqlDocumentGroupConnection & {
   __typename?: 'GraphqlDocumentToGraphqlDocumentGroupConnection';
@@ -8396,6 +8458,18 @@ export type GraphqlDocumentToGraphqlDocumentGroupConnectionWhereArgs = {
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the GraphqlDocument type and the graphqlDocument type */
+export type GraphqlDocumentToParentConnectionEdge = Edge & GraphqlDocumentConnectionEdge & OneToOneConnection & {
+  __typename?: 'GraphqlDocumentToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: GraphqlDocument;
 };
 
 /** Connection between the GraphqlDocument type and the graphqlDocument type */
@@ -11324,8 +11398,13 @@ export enum PluginStatusEnum {
 }
 
 /** The post type */
-export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPostEditorBlocks & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & WithAcfNcPostMetaData & WithAcfNcmazAudioUrl & WithAcfNcmazGalleryImgs & WithAcfNcmazVideoUrl & WithAcfTestCount & {
+export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPostEditorBlocks & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & WithAcfNcPostMetaData & WithAcfNcmazAudioUrl & WithAcfNcmazGalleryImgs & WithAcfNcmazVideoUrl & {
   __typename?: 'Post';
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<PostToPostConnection>;
   /** Connection between the NodeWithAuthor type and the User type */
   author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
   /** The database identifier of the author of the node */
@@ -11414,6 +11493,11 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   ncmazGalleryImgs?: Maybe<NcmazGalleryImgs>;
   /** Fields of the NcmazVideoUrl ACF Field Group */
   ncmazVideoUrl?: Maybe<NcmazVideoUrl>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<PostToParentConnectionEdge>;
   /** The password for the post object. */
   password?: Maybe<Scalars['String']['output']>;
   /** Whether the pings are open or closed for this particular post. */
@@ -11448,14 +11532,21 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** Connection between the Post type and the TermNode type */
   terms?: Maybe<PostToTermNodeConnection>;
-  /** Fields of the TestCount ACF Field Group */
-  testCount?: Maybe<TestCount>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** URLs queued to be pinged. */
   toPing?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The post type */
+export type PostAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -12258,6 +12349,57 @@ export type PostToCommentConnectionWhereArgs = {
   status?: InputMaybe<Scalars['String']['input']>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
+};
+
+/** Connection between the Post type and the post type */
+export type PostToParentConnectionEdge = Edge & OneToOneConnection & PostConnectionEdge & {
+  __typename?: 'PostToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: Post;
+};
+
+/** Connection between the Post type and the post type */
+export type PostToPostConnection = Connection & PostConnection & {
+  __typename?: 'PostToPostConnection';
+  /** Edges for the PostToPostConnection connection */
+  edges: Array<PostToPostConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Post>;
+  /** Information about pagination in a connection. */
+  pageInfo: PostToPostConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type PostToPostConnectionEdge = Edge & PostConnectionEdge & {
+  __typename?: 'PostToPostConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: Post;
+};
+
+/** Page Info on the &quot;PostToPostConnection&quot; */
+export type PostToPostConnectionPageInfo = PageInfo & PostConnectionPageInfo & WpPageInfo & {
+  __typename?: 'PostToPostConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 /** Connection between the Post type and the postFormat type */
@@ -15732,15 +15874,29 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 };
 
 /** The template assigned to the node */
-export type Template_Blank = ContentTemplate & {
-  __typename?: 'Template_Blank';
+export type Template_PageNoTitle = ContentTemplate & {
+  __typename?: 'Template_PageNoTitle';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
 
 /** The template assigned to the node */
-export type Template_BlogAlternative = ContentTemplate & {
-  __typename?: 'Template_BlogAlternative';
+export type Template_PageWithSidebar = ContentTemplate & {
+  __typename?: 'Template_PageWithSidebar';
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The template assigned to the node */
+export type Template_PageWithWideImage = ContentTemplate & {
+  __typename?: 'Template_PageWithWideImage';
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The template assigned to the node */
+export type Template_SingleWithSidebar = ContentTemplate & {
+  __typename?: 'Template_SingleWithSidebar';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
@@ -15935,56 +16091,6 @@ export enum TermObjectsConnectionOrderbyEnum {
   /** Order the connection by term order. */
   TermOrder = 'TERM_ORDER'
 }
-
-/** The &quot;TestCount&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type TestCount = AcfFieldGroup & AcfFieldGroupFields & TestCount_Fields & {
-  __typename?: 'TestCount';
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;TestCount&quot; Field Group */
-  countX?: Maybe<Scalars['Float']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;TestCount&quot; Field Group */
-export type TestCount_Fields = {
-  /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;TestCount&quot; Field Group */
-  countX?: Maybe<Scalars['Float']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** The &quot;Testststststststst&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type Testststststststst = AcfFieldGroup & AcfFieldGroupFields & Testststststststst_Fields & {
-  __typename?: 'Testststststststst';
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Testststststststst&quot; Field Group */
-  dddddd?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Testststststststst&quot; Field Group */
-  ssssss?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;Testststststststst&quot; Field Group */
-export type Testststststststst_Fields = {
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Testststststststst&quot; Field Group */
-  dddddd?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Testststststststst&quot; Field Group */
-  ssssss?: Maybe<Scalars['String']['output']>;
-};
 
 /** A theme object */
 export type Theme = Node & {
@@ -16566,7 +16672,7 @@ export type UpdateUserReactionPostPayload = {
 };
 
 /** A User object */
-export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & WithAcfNcUserMeta & WithAcfUserrrr & {
+export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & WithAcfNcUserMeta & {
   __typename?: 'User';
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   avatar?: Maybe<Avatar>;
@@ -16649,8 +16755,6 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   userReactionPosts?: Maybe<UserToUserReactionPostConnection>;
   /** Username for the user. This field is equivalent to WP_User-&gt;user_login. */
   username?: Maybe<Scalars['String']['output']>;
-  /** Fields of the Userrrr ACF Field Group */
-  userrrr?: Maybe<Userrrr>;
 };
 
 
@@ -16797,6 +16901,11 @@ export enum UserNodeIdTypeEnum {
 /** The userReactionPost type */
 export type UserReactionPost = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
   __typename?: 'UserReactionPost';
+  /**
+   * The ancestors of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  ancestors?: Maybe<UserReactionPostToUserReactionPostConnection>;
   /** Connection between the NodeWithAuthor type and the User type */
   author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
   /** The database identifier of the author of the node */
@@ -16853,6 +16962,11 @@ export type UserReactionPost = ContentNode & DatabaseIdentifier & MenuItemLinkab
   modified?: Maybe<Scalars['String']['output']>;
   /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
   modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /**
+   * The parent of the content node.
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  parent?: Maybe<UserReactionPostToParentConnectionEdge>;
   /** The password for the user-reaction-post object. */
   password?: Maybe<Scalars['String']['output']>;
   /** Connection between the UserReactionPost type and the userReactionPost type */
@@ -16877,6 +16991,15 @@ export type UserReactionPost = ContentNode & DatabaseIdentifier & MenuItemLinkab
    * @deprecated Deprecated in favor of the databaseId field
    */
   userReactionPostId: Scalars['Int']['output'];
+};
+
+
+/** The userReactionPost type */
+export type UserReactionPostAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -16946,12 +17069,63 @@ export enum UserReactionPostIdType {
 }
 
 /** Connection between the UserReactionPost type and the userReactionPost type */
+export type UserReactionPostToParentConnectionEdge = Edge & OneToOneConnection & UserReactionPostConnectionEdge & {
+  __typename?: 'UserReactionPostToParentConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The node of the connection, without the edges
+   * @deprecated This content type is not hierarchical and typically will not have a parent
+   */
+  node: UserReactionPost;
+};
+
+/** Connection between the UserReactionPost type and the userReactionPost type */
 export type UserReactionPostToPreviewConnectionEdge = Edge & OneToOneConnection & UserReactionPostConnectionEdge & {
   __typename?: 'UserReactionPostToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: UserReactionPost;
+};
+
+/** Connection between the UserReactionPost type and the userReactionPost type */
+export type UserReactionPostToUserReactionPostConnection = Connection & UserReactionPostConnection & {
+  __typename?: 'UserReactionPostToUserReactionPostConnection';
+  /** Edges for the UserReactionPostToUserReactionPostConnection connection */
+  edges: Array<UserReactionPostToUserReactionPostConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<UserReactionPost>;
+  /** Information about pagination in a connection. */
+  pageInfo: UserReactionPostToUserReactionPostConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type UserReactionPostToUserReactionPostConnectionEdge = Edge & UserReactionPostConnectionEdge & {
+  __typename?: 'UserReactionPostToUserReactionPostConnectionEdge';
+  /**
+   * A cursor for use in pagination
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /**
+   * The item at the end of the edge
+   * @deprecated This content type is not hierarchical and typically will not have ancestors
+   */
+  node: UserReactionPost;
+};
+
+/** Page Info on the &quot;UserReactionPostToUserReactionPostConnection&quot; */
+export type UserReactionPostToUserReactionPostConnectionPageInfo = PageInfo & UserReactionPostConnectionPageInfo & WpPageInfo & {
+  __typename?: 'UserReactionPostToUserReactionPostConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
 };
 
 /** A user role object */
@@ -17008,11 +17182,11 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   Contributor = 'CONTRIBUTOR',
   /** User role with specific capabilities */
+  Customer = 'CUSTOMER',
+  /** User role with specific capabilities */
   Editor = 'EDITOR',
   /** User role with specific capabilities */
-  SeoEditor = 'SEO_EDITOR',
-  /** User role with specific capabilities */
-  SeoManager = 'SEO_MANAGER',
+  ShopManager = 'SHOP_MANAGER',
   /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER'
 }
@@ -17620,29 +17794,6 @@ export type UserToUserRoleConnectionPageInfo = PageInfo & UserRoleConnectionPage
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** The &quot;Userrrr&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type Userrrr = AcfFieldGroup & AcfFieldGroupFields & Userrrr_Fields & {
-  __typename?: 'Userrrr';
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Userrrr&quot; Field Group */
-  esrerssresresrsers?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;Userrrr&quot; Field Group */
-export type Userrrr_Fields = {
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;Userrrr&quot; Field Group */
-  esrerssresresrsers?: Maybe<Scalars['String']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
 /** Field to order the connection by */
 export enum UsersConnectionOrderbyEnum {
   /** Order by display name */
@@ -17745,18 +17896,6 @@ export type WithAcfNcmazfaustMenu = {
   ncmazfaustMenu?: Maybe<NcmazfaustMenu>;
 };
 
-/** Provides access to fields of the &quot;TestCount&quot; ACF Field Group via the &quot;testCount&quot; field */
-export type WithAcfTestCount = {
-  /** Fields of the TestCount ACF Field Group */
-  testCount?: Maybe<TestCount>;
-};
-
-/** Provides access to fields of the &quot;Userrrr&quot; ACF Field Group via the &quot;userrrr&quot; field */
-export type WithAcfUserrrr = {
-  /** Fields of the Userrrr ACF Field Group */
-  userrrr?: Maybe<Userrrr>;
-};
-
 /** The writing setting type */
 export type WritingSettings = {
   __typename?: 'WritingSettings';
@@ -17766,140 +17905,6 @@ export type WritingSettings = {
   defaultPostFormat?: Maybe<Scalars['String']['output']>;
   /** Convert emoticons like :-) and :-P to graphics on display. */
   useSmilies?: Maybe<Scalars['Boolean']['output']>;
-};
-
-/** A block used for editing the site */
-export type YoastFaqBlock = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'YoastFaqBlock';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the YoastFaqBlock Block Type */
-  attributes?: Maybe<YoastFaqBlockAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the YoastFaqBlock Block Type */
-export type YoastFaqBlockAttributes = {
-  __typename?: 'YoastFaqBlockAttributes';
-  /** The &quot;additionalListCssClasses&quot; field on the &quot;YoastFaqBlockAttributes&quot; block or block attributes */
-  additionalListCssClasses?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;YoastFaqBlockAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;lock&quot; field on the &quot;YoastFaqBlockAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;YoastFaqBlockAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;questions&quot; field on the &quot;YoastFaqBlockAttributes&quot; block or block attributes */
-  questions?: Maybe<Scalars['BlockAttributesArray']['output']>;
-};
-
-/** A block used for editing the site */
-export type YoastHowToBlock = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'YoastHowToBlock';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the YoastHowToBlock Block Type */
-  attributes?: Maybe<YoastHowToBlockAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the YoastHowToBlock Block Type */
-export type YoastHowToBlockAttributes = {
-  __typename?: 'YoastHowToBlockAttributes';
-  /** The &quot;additionalListCssClasses&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  additionalListCssClasses?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;days&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  days?: Maybe<Scalars['String']['output']>;
-  /** The &quot;defaultDurationText&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  defaultDurationText?: Maybe<Scalars['String']['output']>;
-  /** The &quot;description&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  description?: Maybe<Scalars['String']['output']>;
-  /** The &quot;durationText&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  durationText?: Maybe<Scalars['String']['output']>;
-  /** The &quot;hasDuration&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  hasDuration?: Maybe<Scalars['Boolean']['output']>;
-  /** The &quot;hours&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  hours?: Maybe<Scalars['String']['output']>;
-  /** The &quot;jsonDescription&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  jsonDescription?: Maybe<Scalars['String']['output']>;
-  /** The &quot;lock&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;minutes&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  minutes?: Maybe<Scalars['String']['output']>;
-  /** The &quot;steps&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  steps?: Maybe<Scalars['BlockAttributesArray']['output']>;
-  /** The &quot;unorderedList&quot; field on the &quot;YoastHowToBlockAttributes&quot; block or block attributes */
-  unorderedList?: Maybe<Scalars['Boolean']['output']>;
-};
-
-/** A block used for editing the site */
-export type YoastSeoBreadcrumbs = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'YoastSeoBreadcrumbs';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the YoastSeoBreadcrumbs Block Type */
-  attributes?: Maybe<YoastSeoBreadcrumbsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the YoastSeoBreadcrumbs Block Type */
-export type YoastSeoBreadcrumbsAttributes = {
-  __typename?: 'YoastSeoBreadcrumbsAttributes';
-  /** The &quot;className&quot; field on the &quot;YoastSeoBreadcrumbsAttributes&quot; block or block attributes */
-  className: Scalars['String']['output'];
-  /** The &quot;lock&quot; field on the &quot;YoastSeoBreadcrumbsAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;YoastSeoBreadcrumbsAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
 };
 
 export type SearchFormQueryGetPostsBySearchQueryVariables = Exact<{
@@ -18735,7 +18740,7 @@ export type GetPageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Pa
     ) | (
       { __typename: 'NcmazFaustBlockTerms', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null }
       & { ' $fragmentRefs'?: { 'NcmazFaustBlockTermsFragmentFragment': NcmazFaustBlockTermsFragmentFragment } }
-    ) | { __typename: 'YoastFaqBlock', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'YoastHowToBlock', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', renderedHtml?: string | null, clientId?: string | null, parentClientId?: string | null } | null> | null } | null, generalSettings?: (
+    ) | null> | null } | null, generalSettings?: (
     { __typename?: 'GeneralSettings' }
     & { ' $fragmentRefs'?: { 'NcgeneralSettingsFieldsFragmentFragment': NcgeneralSettingsFieldsFragmentFragment } }
   ) | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<(
