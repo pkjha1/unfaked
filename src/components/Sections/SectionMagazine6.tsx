@@ -65,11 +65,11 @@ const SectionMagazine6: FC<SectionMagazine6Props> = ({
 						</div>
 
 						<div className="mt-7">
-							<CardAuthor2
+							{/* <CardAuthor2
 								readingTime={ncPostMetaData?.readingTime || 1}
 								date={date}
 								author={author}
-							/>
+							/> */}
 						</div>
 					</div>
 				</div>

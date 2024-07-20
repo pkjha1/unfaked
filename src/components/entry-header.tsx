@@ -11,7 +11,7 @@ export default function EntryHeader({ title, date, author }: EntryHeaderProps) {
 
       {date && author && (
         <div className="text-sm mt-5">
-          By {author} on <time>{new Date(date).toDateString()}</time>
+          on <time>{new Date(date).toDateString()}</time>
         </div>
       )}
     </div>
