@@ -74,7 +74,7 @@ const Card14: FC<Card14Props> = ({
 						href={author?.uri || ''}
 						className="relative flex items-center space-x-2 rtl:space-x-reverse"
 					>
-						<Avatar
+						{/* <Avatar
 							radius="rounded-full"
 							containerClassName="ring-2 ring-white"
 							sizeClass="h-6 w-6 text-sm"
@@ -83,7 +83,7 @@ const Card14: FC<Card14Props> = ({
 						/>
 						<span className="block truncate text-white">
 							{author.name || ''}
-						</span>
+						</span> */}
 					</Link>
 					<>
 						<span className="mx-[6px]">·</span>

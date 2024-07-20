@@ -62,11 +62,11 @@ const Card2: FC<Card2Props> = ({
 
 			<div className="mt-5 flex flex-col px-4">
 				<div className="space-y-3">
-					<PostCardMeta
+					{/* <PostCardMeta
 						className="relative text-sm"
 						avatarSize="h-8 w-8 text-sm"
 						meta={{ author, date }}
-					/>
+					/> */}
 
 					<h2
 						className={`nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100 ${

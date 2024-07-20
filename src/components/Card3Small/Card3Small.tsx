@@ -34,7 +34,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = 'h-full', post }) => {
 				title={title || ''}
 			></Link>
 			<div className="relative space-y-2">
-				<PostCardMeta meta={{ author, date }} />
+				{/* <PostCardMeta meta={{ author, date }} /> */}
 				<h2 className="nc-card-title block text-sm font-medium text-neutral-900 sm:text-base sm:font-semibold dark:text-neutral-100">
 					<Link
 						dangerouslySetInnerHTML={{ __html: title }}

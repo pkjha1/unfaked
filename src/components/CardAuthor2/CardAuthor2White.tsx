@@ -23,19 +23,19 @@ const CardAuthor2White: FC<CardAuthor2WhiteProps> = ({
 			href={uri}
 			className={`nc-CardAuthor2White relative inline-flex items-center ${className}`}
 		>
-			<Avatar
+			{/* <Avatar
 				sizeClass="h-10 w-10 text-base"
 				containerClassName="flex-shrink-0 mr-3"
 				radius="rounded-full"
 				imgUrl={featuredImageMeta?.sourceUrl || ''}
 				userName={name || ''}
-			/>
+			/> */}
 			<div>
-				<h2
+				{/* <h2
 					className={`text-sm font-medium capitalize text-neutral-200 hover:text-white dark:text-neutral-700 dark:hover:text-black`}
 				>
 					{name}
-				</h2>
+				</h2> */}
 				<span
 					className={`mt-1 flex items-center text-xs text-neutral-300 dark:text-neutral-700`}
 				>

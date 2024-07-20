@@ -61,7 +61,7 @@ const Card12: FC<Card12Props> = ({ className = 'h-full', post }) => {
 					dangerouslySetInnerHTML={{ __html: excerpt || '' }}
 					className="mt-4 hidden text-neutral-500 sm:block dark:text-neutral-400"
 				></div>
-				<PostCardMeta className="mt-5 text-sm" meta={{ author, date }} />
+				{/* <PostCardMeta className="mt-5 text-sm" meta={{ author, date }} /> */}
 			</div>
 		</div>
 	)
