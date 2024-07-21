@@ -1,10 +1,38 @@
 import WidgetHeading1 from "@/components/WidgetHeading1/WidgetHeading1";
+import GptRequestForm from "@/components/GptRequestForm";
+import {useState} from "react";
+import CardCategory6Skeleton from "@/components/CardCategory6/CardCategory6Skeleton";
 
 export interface WidgetSummaryProps {
     className?: string
 }
 
+interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+}
+
 const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark:border-neutral-700' }: WidgetSummaryProps) => {
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const handleUserInput = (userInput: string) => {
+        setMessages((prevMessages) => [
+            ...prevMessages,
+            { role: 'user', content: userInput }
+        ]);
+        setLoading(true);
+    }
+
+    const handleNewMessage = (response: string | null) => {
+        setLoading(false);
+        if (response === null) return;
+        setMessages((prevMessages) => [
+            ...prevMessages,
+            { role: 'assistant', content: response },
+        ]);
+    };
+
     return (
         <div className={`nc-WidgetCategories overflow-hidden ${className}`}>
             <WidgetHeading1
@@ -17,9 +45,18 @@ const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark
                 }
             />
             <div className="p-4 xl:p-5">
-				<span className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-					To get the full dependency tree for a project using Maven, you can run the mvn dependency:tree command in the terminal. This command will print out the project's dependency hierarchy, including the groupId, artifactId, packaging, version, and scope of each dependency. The output will also show all the JARs used to run the application.
-				</span>
+				<div className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                    {messages.map((message, index) => (
+                        <div key={index} className={`mb-2 ${message.role === 'user' ? 'text-blue-600' : 'text-green-600'}`}>
+                            <strong>{message.role === 'user' ? 'User: ' : 'Assistant: '}</strong>
+                            {message.content}
+                        </div>
+                    ))}
+                    {loading && <CardCategory6Skeleton className="p-4 xl:p-5" />}
+				</div>
+                <div className="mt-4">
+                    <GptRequestForm onNewMessage={handleNewMessage} onNewUserInput={handleUserInput} />
+                </div>
             </div>
         </div>
     )
