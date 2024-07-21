@@ -8,7 +8,6 @@ import {
 } from '@headlessui/react'
 import {
 	Bars3Icon,
-	FolderIcon,
 	LightBulbIcon,
 	PowerIcon,
 	UserCircleIcon,
@@ -30,23 +29,14 @@ const T = getTrans()
 
 interface NavigationItem {
 	name:
-		| TDashBoardPostTab
 		| TDashBoardEditProfileTab
-		| 'posts'
 		| 'edit profile'
-		| 'documents'
+		| 'deepFake'
 	title: string
 	href: string
 	icon?: any
 	children?: NavigationItem[]
 }
-
-export type TDashBoardPostTab =
-	| 'published'
-	| 'pending'
-	| 'schedule'
-	| 'draft'
-	| 'trash'
 
 export type TDashBoardEditProfileTab =
 	| 'general'
@@ -56,40 +46,6 @@ export type TDashBoardEditProfileTab =
 	| 'delete-account'
 
 const navigation: NavigationItem[] = [
-	{
-		name: 'posts',
-		title: T['Posts'],
-		href: '/dashboard/posts/published',
-		icon: FolderIcon,
-		children: [
-			{
-				name: 'published',
-				title: T['Published'],
-				href: '/dashboard/posts/published',
-			},
-			{
-				name: 'pending',
-				title: T['Pending'],
-				href: '/dashboard/posts/pending',
-			},
-			{
-				name: 'schedule',
-				title: T['Scheduled'],
-				href: '/dashboard/posts/schedule',
-			},
-			{
-				name: 'draft',
-				title: T['Draft'],
-				href: '/dashboard/posts/draft',
-			},
-			{
-				name: 'trash',
-				title: T['Trash'],
-				href: '/dashboard/posts/trash',
-			},
-		],
-	},
-
 	{
 		name: 'edit profile',
 		title: T['Edit profile'],
@@ -124,10 +80,10 @@ const navigation: NavigationItem[] = [
 		],
 	},
 	{
-		name: 'documents',
-		title: T['Documents'],
-		href: NC_SITE_SETTINGS.document_page?.enable
-			? NC_SITE_SETTINGS.document_page?.uri || ''
+		name: 'deepFake',
+		title: T['DeepFake'],
+		href: NC_SITE_SETTINGS.deep_fake_page?.enable
+			? NC_SITE_SETTINGS.deep_fake_page?.uri || ''
 			: '',
 		icon: LightBulbIcon,
 	},
@@ -145,7 +101,7 @@ export default function DashboardLayout({ children }: Props) {
 
 	const renderItem = (item: NavigationItem) => {
 		const isCurrent = item.name === currentTab
-		if (item.name === 'documents' && !item.href) {
+		if (item.name === 'deepFake' && !item.href) {
 			return null
 		}
 

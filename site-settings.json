@@ -249,11 +249,11 @@
 			}
 		]
 	},
-	"document_page": {
+	"deep_fake_page": {
 		"enable": true,
-		"uri": "/documents",
-		"title": "Documents",
-		"sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+		"uri": "/dashboard/deep-fake",
+		"title": "Deep Fake Detection",
+		"sub_title": "We help you find if your image is real of fake."
 	},
 	"cookies_policy_page": {
 		"uri": "#"

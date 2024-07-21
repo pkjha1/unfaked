@@ -70,7 +70,7 @@ export default {
 	Profile: 'Profile',
 	Socials: 'Socials',
 	'Delete account': 'Delete account',
-	Documents: 'Documents',
+	DeepFake: 'DeepFake',
 	'Sign out': 'Sign out',
 	'Back to home': 'Back to home',
 	'Please fill all fields': 'Please fill all fields',
