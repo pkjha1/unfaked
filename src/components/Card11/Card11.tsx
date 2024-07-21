@@ -54,11 +54,11 @@ const Card11: FC<Card11Props> = ({
 			</span>
 
 			<div className="flex flex-1 flex-col space-y-3 rounded-b-3xl border border-t-0 border-neutral-100 px-3.5 py-4 dark:border-neutral-800">
-				{!hiddenAuthor ? (
+				{/* {!hiddenAuthor ? (
 					<PostCardMeta meta={{ author, date }} />
 				) : (
 					<span className="text-xs text-neutral-500">{date}</span>
-				)}
+				)} */}
 				<h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
 					<span
 						dangerouslySetInnerHTML={{ __html: title }}

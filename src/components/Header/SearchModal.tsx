@@ -361,7 +361,7 @@ const CardPost = ({ post, focus }: { post: TPostCard; focus: boolean }) => {
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
 					<p className="text-xs leading-6 text-neutral-500 xl:text-sm dark:text-neutral-400">
 						<span className="capitalize">{author?.name || ''}</span>
-						{author?.name && ' · '}
+						{/* {author?.name && ' · '} */}
 						<time dateTime={date} className="leading-6">
 							{ncFormatDate(date)}
 						</time>

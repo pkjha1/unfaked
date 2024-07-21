@@ -34,19 +34,19 @@ const CardAuthor2: FC<CardAuthor2Props> = ({
 			href={uri || ''}
 			className={`nc-CardAuthor2 relative inline-flex items-center ${className}`}
 		>
-			<Avatar
+			{/* <Avatar
 				sizeClass="h-10 w-10 text-base"
 				containerClassName="flex-shrink-0 me-3"
 				radius="rounded-full"
 				imgUrl={featuredImageMeta?.sourceUrl || ''}
 				userName={name || ''}
-			/>
+			/> */}
 			<div>
-				<h2
+				{/* <h2
 					className={`text-sm font-medium capitalize text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white`}
 				>
 					{name}
-				</h2>
+				</h2> */}
 				<span
 					className={`mt-1 flex items-center text-xs text-neutral-500 dark:text-neutral-400`}
 				>

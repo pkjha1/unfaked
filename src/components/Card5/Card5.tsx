@@ -42,12 +42,12 @@ const Card5: FC<Card5Props> = ({ className = '', post }) => {
 						title={title}
 					></Link>
 				</h2>
-				<CardAuthor2
+				{/* <CardAuthor2
 					className="relative mt-auto"
 					readingTime={ncPostMetaData?.readingTime || 1}
 					author={author}
 					date={date}
-				/>
+				/> */}
 			</div>
 		</div>
 	)
