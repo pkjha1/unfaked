@@ -19,16 +19,16 @@ const CardAuthorBox: FC<CardAuthorBoxProps> = ({ className = '', author }) => {
 			href={uri}
 			className={`nc-CardAuthorBox flex flex-col items-center justify-center rounded-3xl bg-neutral-100/70 px-3 py-5 text-center sm:px-6 sm:py-7 dark:bg-neutral-900 ${className}`}
 		>
-			<Avatar
+			{/* <Avatar
 				sizeClass="w-20 h-20 text-xl"
 				radius="rounded-full"
 				imgUrl={featuredImageMeta?.sourceUrl || ''}
 				userName={name}
-			/>
+			/> */}
 			<div className="mt-3">
-				<h2 className={`text-sm font-medium sm:text-base`}>
+				{/* <h2 className={`text-sm font-medium sm:text-base`}>
 					<span className="line-clamp-1">{name}</span>
-				</h2>
+				</h2> */}
 				<span
 					className={`mt-1 block text-sm text-neutral-500 dark:text-neutral-400`}
 				>

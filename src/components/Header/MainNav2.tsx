@@ -41,7 +41,7 @@ const MainNav2: FC<MainNav2Props> = ({ menuItems, description, title }) => {
 							className="hidden lg:flex"
 						/>
 						<div className="mx-2 hidden h-8 self-center border-l border-neutral-200 md:block dark:border-neutral-700"></div>
-						<CreateBtn className="self-center" />
+						{/* <CreateBtn className="self-center" /> */}
 						<SwitchDarkMode className="hidden self-center lg:flex" />
 						<SearchIconBtn className="lg:hidden" />
 						<AvatarDropdown className="self-center" />

@@ -48,9 +48,9 @@ const Card9: FC<Card9Props> = ({
 						></span>
 					</h2>
 					<Link href={author?.uri || ''} className="relative mt-2.5 flex">
-						<span className="block truncate font-medium capitalize text-neutral-200 hover:text-white">
+						{/* <span className="block truncate font-medium capitalize text-neutral-200 hover:text-white">
 							{author?.name}
-						</span>
+						</span> */}
 						<span className="mx-[6px] font-medium">·</span>
 						<span className="truncate font-normal">{ncFormatDate(date)}</span>
 					</Link>

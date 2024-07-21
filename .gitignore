@@ -3,3 +3,13 @@
 node_modules
 
 .idea
+
+possibleTypes.json
+
+src/__generated__
+
+.DS_Store
+
+.env.local
+
+.next/

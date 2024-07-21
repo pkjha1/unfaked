@@ -33,7 +33,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
 				size === 'normal' ? 'text-xs' : 'text-base'
 			} ${className}`}
 		>
-			<Link
+			{/* <Link
 				href={author?.uri || ''}
 				className="flex items-center space-x-2 rtl:space-x-reverse"
 			>
@@ -51,12 +51,12 @@ const PostMeta2: FC<PostMeta2Props> = ({
 					}
 					userName={author?.name || 'R'}
 				/>
-			</Link>
+			</Link> */}
 			<div className="ms-3">
 				<div className="flex items-center">
-					<Link href={author?.uri || ''} className="block font-semibold">
+					{/* <Link href={author?.uri || ''} className="block font-semibold">
 						{author?.name || 'R'}
-					</Link>
+					</Link> */}
 
 					{!hiddenCategories && (
 						<>

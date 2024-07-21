@@ -41,17 +41,17 @@ const CardAuthorBox2: FC<CardAuthorBox2Props> = ({
 			</div>
 
 			<div className="m-8 -mt-8 text-center">
-				<Avatar
+				{/* <Avatar
 					containerClassName="ring-2 ring-white"
 					sizeClass="w-16 h-16 text-2xl"
 					radius="rounded-full"
 					imgUrl={featuredImageMeta?.sourceUrl || ''}
 					userName={name}
-				/>
+				/> */}
 				<div className="mt-3">
-					<h2 className={`text-base font-medium`}>
+					{/* <h2 className={`text-base font-medium`}>
 						<span className="line-clamp-1">{name}</span>
-					</h2>
+					</h2> */}
 					<span
 						className={`mt-1 block text-sm text-neutral-500 dark:text-neutral-400`}
 					>
