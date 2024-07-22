@@ -48,12 +48,12 @@ const quickActions: PersonType[] = [
 		icon: PostSearchIcon,
 		uri: '/search/posts/',
 	},
-	{
-		type: 'quick-action',
-		name: T['Search authors'],
-		icon: UserSearchIcon,
-		uri: '/search/authors/',
-	},
+	// {
+	// 	type: 'quick-action',
+	// 	name: T['Search authors'],
+	// 	icon: UserSearchIcon,
+	// 	uri: '/search/authors/',
+	// },
 	{
 		type: 'quick-action',
 		name: T['Search categories'],

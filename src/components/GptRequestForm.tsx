@@ -11,7 +11,7 @@ interface Props {
 }
 
 const openai = new OpenAI({
-    apiKey: 'sk-proj-ZuF4TIh5Cwm1n1frISwVT3BlbkFJD8M8Bg9ESswkwzZyFCZp',
+    apiKey: 'sk-proj-x6oc2xaNyGWbEpmZ9xldT3BlbkFJSIvNCm41VSBzOtFH1BMn',
     dangerouslyAllowBrowser: true
 });
 
