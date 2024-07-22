@@ -3,6 +3,7 @@ import WidgetAddSubscriberForm from "@/components/WidgetAddSubscriberForm/Widget
 import WidgetCategories from "@/components/WidgetCategories/WidgetCategories";
 import WidgetSocialsFollow from "@/components/WidgetSocialsFollow/WidgetSocialsFollow";
 import React, { FC } from "react";
+import WidgetSummary from "@/components/WidgetSummary/WidgetSummary";
 
 export interface SidebarProps {
   className?: string;
@@ -15,11 +16,10 @@ export const Sidebar: FC<SidebarProps> = ({
 }) => {
   return (
     <div className={`nc-SingleSidebar ${className}`}>
-      <WidgetAddSubscriberForm />
-
-      <WidgetSocialsFollow />
-
-      <WidgetCategories categories={categories || []} />
+        <WidgetAddSubscriberForm />
+        <WidgetSocialsFollow />
+        <WidgetCategories categories={categories || []} />
+        <WidgetSummary />
     </div>
   );
 };
