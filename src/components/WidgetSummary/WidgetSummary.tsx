@@ -4,22 +4,24 @@ import {useState} from "react";
 import CardCategory6Skeleton from "@/components/CardCategory6/CardCategory6Skeleton";
 
 export interface WidgetSummaryProps {
-    className?: string
+    className?: string;
+    blogPost: string;
 }
 
 interface Message {
     role: 'user' | 'assistant';
     content: string;
+    isHtml?: boolean;
 }
 
-const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark:border-neutral-700' }: WidgetSummaryProps) => {
+const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark:border-neutral-700', blogPost }: WidgetSummaryProps) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleUserInput = (userInput: string) => {
         setMessages((prevMessages) => [
             ...prevMessages,
-            { role: 'user', content: userInput }
+            { role: 'user', content: userInput, isHtml: false }
         ]);
         setLoading(true);
     }
@@ -27,9 +29,13 @@ const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark
     const handleNewMessage = (response: string | null) => {
         setLoading(false);
         if (response === null) return;
+
+        const responseToAdd = response.substring(8, response.length-4);
+        console.log(responseToAdd)
+
         setMessages((prevMessages) => [
             ...prevMessages,
-            { role: 'assistant', content: response },
+            { role: 'assistant', content: responseToAdd, isHtml: true },
         ]);
     };
 
@@ -47,15 +53,19 @@ const WidgetSummary = ({ className = 'rounded-3xl border border-neutral-100 dark
             <div className="p-4 xl:p-5">
 				<div className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
                     {messages.map((message, index) => (
-                        <div key={index} className={`mb-2 ${message.role === 'user' ? 'text-blue-600' : 'text-green-600'}`}>
-                            <strong>{message.role === 'user' ? 'User: ' : 'Assistant: '}</strong>
-                            {message.content}
+                        <div key={index} className={`mb-2`}>
+                            <strong className={`${message.role === 'user' ? 'text-blue-600' : 'text-green-600'}`}>{message.role === 'user' ? 'User: ' : 'Assistant: '}</strong>
+                            {message.isHtml ? (
+                                <div dangerouslySetInnerHTML={{ __html: message.content }} />
+                            ) : (
+                                <p>{message.content}</p>
+                            )}
                         </div>
                     ))}
                     {loading && <CardCategory6Skeleton className="p-4 xl:p-5" />}
 				</div>
                 <div className="mt-4">
-                    <GptRequestForm onNewMessage={handleNewMessage} onNewUserInput={handleUserInput} />
+                    <GptRequestForm onNewMessage={handleNewMessage} onNewUserInput={handleUserInput} blogContent={blogPost} />
                 </div>
             </div>
         </div>

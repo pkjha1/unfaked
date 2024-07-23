@@ -1,28 +1,28 @@
-import { gql } from "../__generated__";
+import {gql} from "../__generated__";
 import {
   GetPostSiglePageQuery,
   NcgeneralSettingsFieldsFragmentFragment,
   NcmazFcUserReactionPostActionEnum,
   NcmazFcUserReactionPostNumberUpdateEnum,
 } from "../__generated__/graphql";
-import { FaustTemplate } from "@faustwp/core";
+import {FaustTemplate} from "@faustwp/core";
 import SingleContent from "@/container/singles/SingleContent";
 import SingleType1 from "@/container/singles/single/single";
-import { getPostDataFromPostFragment } from "@/utils/getPostDataFromPostFragment";
-import { Sidebar } from "@/container/singles/Sidebar";
+import {getPostDataFromPostFragment} from "@/utils/getPostDataFromPostFragment";
+import {Sidebar} from "@/container/singles/Sidebar";
 import PageLayout from "@/container/PageLayout";
-import { FOOTER_LOCATION, PRIMARY_LOCATION } from "@/contains/menu";
+import {FOOTER_LOCATION, PRIMARY_LOCATION} from "@/contains/menu";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import { NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT } from "@/fragments/mutations";
-import { useMutation } from "@apollo/client";
-import { IS_DEV } from "@/contains/site-settings";
-import { useSelector } from "react-redux";
-import { RootState } from "@/stores/store";
+import {useEffect, useState} from "react";
+import {NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT} from "@/fragments/mutations";
+import {useMutation} from "@apollo/client";
+import {IS_DEV} from "@/contains/site-settings";
+import {useSelector} from "react-redux";
+import {RootState} from "@/stores/store";
 import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
-import { TPostCard } from "@/components/Card2/Card2";
-import { useRouter } from "next/router";
-import { TCategoryCardFull } from "@/components/CardCategory1/CardCategory1";
+import {TPostCard} from "@/components/Card2/Card2";
+import {useRouter} from "next/router";
+import {TCategoryCardFull} from "@/components/CardCategory1/CardCategory1";
 import SingleTypeAudio from "@/container/singles/single-audio/single-audio";
 import SingleTypeVideo from "@/container/singles/single-video/single-video";
 import SingleTypeGallery from "@/container/singles/single-gallery/single-gallery";
@@ -196,7 +196,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
                   <SingleContent post={_post} />
                 </div>
                 <div className="w-full mt-12 lg:mt-0 lg:w-2/5 lg:ps-10 xl:ps-0 xl:w-1/3">
-                  <Sidebar categories={_top10Categories} />
+                  <Sidebar categories={_top10Categories} post={_post} />
                 </div>
               </div>
 
