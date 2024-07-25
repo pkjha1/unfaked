@@ -13,3 +13,9 @@ src/__generated__
 .env.local
 
 .next/
+
+public/robots.txt
+
+public/sitemap.xml
+
+public/sitemap-0.xml
