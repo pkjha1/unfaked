@@ -1,21 +1,20 @@
 'use client'
 
-import { FC, forwardRef, useEffect, useRef, useState } from 'react'
+import {FC, forwardRef, useEffect, useRef, useState} from 'react'
 import Tag from '@/components/Tag/Tag'
-import SingleAuthor from './SingleAuthor'
 import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import PostCardLikeAction from '@/components/PostCardLikeAction/PostCardLikeAction'
 import PostCardCommentBtn from '@/components/PostCardCommentBtn/PostCardCommentBtn'
-import { ArrowUpIcon } from '@heroicons/react/24/solid'
-import { GetPostSiglePageQuery } from '@/__generated__/graphql'
-import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import {ArrowUpIcon} from '@heroicons/react/24/solid'
+import {GetPostSiglePageQuery} from '@/__generated__/graphql'
+import {getPostDataFromPostFragment} from '@/utils/getPostDataFromPostFragment'
 import NcBookmark from '@/components/NcBookmark/NcBookmark'
 import SingleCommentWrap from './SingleCommentWrap'
-import { Transition } from '@headlessui/react'
+import {Transition} from '@headlessui/react'
 import TableContentAnchor from './TableContentAnchor'
 import Alert from '@/components/Alert'
-import { clsx } from 'clsx'
-import { useMusicPlayer } from '@/hooks/useMusicPlayer'
+import {clsx} from 'clsx'
+import {useMusicPlayer} from '@/hooks/useMusicPlayer'
 
 export interface SingleContentProps {
 	post: GetPostSiglePageQuery['post']
@@ -140,10 +139,10 @@ const SingleContent: FC<SingleContentProps> = ({ post }) => {
 				) : null}
 
 				{/* AUTHOR */}
-				<div className="mx-auto max-w-screen-md border-b border-t border-neutral-100 dark:border-neutral-700"></div>
-				<div className="mx-auto max-w-screen-md">
-					<SingleAuthor author={author} />
-				</div>
+				{/*<div className="mx-auto max-w-screen-md border-b border-t border-neutral-100 dark:border-neutral-700"></div>*/}
+				{/*<div className="mx-auto max-w-screen-md">*/}
+				{/*	<SingleAuthor author={author} />*/}
+				{/*</div>*/}
 
 				{/* COMMENTS LIST - not delete comments id */}
 				{commentStatus === 'open' ? (
