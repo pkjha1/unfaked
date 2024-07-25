@@ -13,7 +13,7 @@ interface Props {
 const beautificationPrompt = "Can you please provide a beautified HTML content for the above question? Also keep in mind to not respond anything other than related to article. For eg, do not provide information that the response is an html etc. Also, the response should be a full HTML 5 but please do not add anything else outside the html tag.";
 
 const openai = new OpenAI({
-    apiKey: 'sk-proj-jEIfQnb5nSlXe5lGgjCTT3BlbkFJna6Q1IocRncrC0Ea33Fd',
+    apiKey: 'sk-proj-KMBC9PI4tW396eFPgrHhT3BlbkFJsGB0miSPWSKTVaX954CW',
     dangerouslyAllowBrowser: true
 });
 
