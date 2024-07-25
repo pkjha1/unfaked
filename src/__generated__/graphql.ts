@@ -10386,6 +10386,8 @@ export type NcmazFaustBlockMagazineAttributes = {
   queries: Scalars['BlockAttributesObject']['output'];
   /** The &quot;showLoadMore&quot; field on the &quot;NcmazFaustBlockMagazineAttributes&quot; block or block attributes */
   showLoadMore: Scalars['Boolean']['output'];
+  /** The &quot;showViewAll&quot; field on the &quot;NcmazFaustBlockMagazineAttributes&quot; block or block attributes */
+  showViewAll: Scalars['Boolean']['output'];
   /** The &quot;uniqueId&quot; field on the &quot;NcmazFaustBlockMagazineAttributes&quot; block or block attributes */
   uniqueId: Scalars['String']['output'];
 };

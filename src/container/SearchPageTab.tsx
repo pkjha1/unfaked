@@ -1,11 +1,7 @@
-import {
-	CategoriesIcon,
-	PostSearchIcon,
-	UserSearchIcon,
-} from '@/components/Icons/Icons'
+import {CategoriesIcon, PostSearchIcon,} from '@/components/Icons/Icons'
 import getTrans from '@/utils/getTrans'
 import Link from 'next/link'
-import React, { FC, useEffect, useState } from 'react'
+import React, {FC, useEffect, useState} from 'react'
 
 interface TabProps {
 	currentTab: 'posts' | 'categories' | 'authors'
@@ -27,12 +23,7 @@ const TABS: {
 		tab: 'categories',
 		label: T['Categories'],
 		svgIcon: <CategoriesIcon className="mb-2.5 h-7 w-7" />,
-	},
-	{
-		tab: 'authors',
-		label: T['Authors'],
-		svgIcon: <UserSearchIcon className="mb-2.5 h-7 w-7" />,
-	},
+	}
 ]
 
 const Tab: FC<TabProps> = ({ currentTab, search }) => {
